@@ -4,7 +4,7 @@
 
 // Recommended: Ask for the city name and then the rest of the code
 
-//let target = prompt("Give me a city");
+let target = prompt("Give me a city");
 const h2 = document.querySelector("h2");
 const h3 = document.querySelector ("h3");
 const main = document.querySelector("main");
@@ -13,61 +13,60 @@ const closestID = document.getElementById("closest");
 const citiesID = document.getElementById("cities");
 const linksID = document.getElementById("links");
 const furthestID = document.getElementById("furthest");
+const span = document.querySelector("span")
+const cityFound = findCity(target)
 
-//if (typeof cities === "undefined"){
-//    console.log("Staden finns inte i vår databas")
-//}
+
+function findCity(target){
+    for (let city of cities){
+        if (city.name == target){
+            return city;
+        }
+    }
+    return null;
+}
+
+if (cityFound == null){
+    h2.textContent = `${target} finns inte i databasen`
+    document.title = "Not found"       
+} 
+else{
+    h2.textContent = `${cityFound.name} (${cityFound.country})`
+    document.title = cityFound.name
+}
 
 
 for (let city of cities){
     citiesID.innerHTML += `<p class="cityBox"> ${city.name}</p>`
 }
 
-//const nRows = prompt("Ange antal rader");//const nCols = prompt("Ange antal kolumner");
-//for (let row = 0; row <= nRows; row++){
-// for (let col = 0; col <=nCols; col++){
-//     const cell = document.createElement("div");
-//     cell.classList.add("cell")
-//     cell.textContent = `${row}, ${col}`;
-//   main.appendChild(cell);
-//} //}
 
-//for (let distance = 0; distance < distances.length; distance++){
-    //for (let city = 0; city < cities.length; city++){
-       //let cell = document.createElement("div")
-        //cell.classList.add("cell")
-        //cell.textContent = `${distance}, ${city}`
-        //tableID.appendChild(cell)
-    //}
+
+
+
+//for (let city of cities){
+//   // let tableRow = document.createElement("div")
+//    tableID.appendChild(tableRow)
+//    tableRow.classList.add("head_row")
+//    tableRow.textContent = `${city.id}`      
 //}
-
-    // Lägg till stadens namn som kolumnrubriker
-    for (let i = 0; i < cities.length; i++) {
-        const column = document.createElement("div");
-        column.textContent = `${i} - ${cities[i]}`; // T.ex. "0 - Strasbourg"
-        tableID.appendChild(column);
-    }
-   // table.appendChild(headerRow);
-
-    // Skapa tabellens rader
-    for (let i = 0; i < distances.length; i++) {
-        const row = document.createElement("div");
-
-        // Lägg till radrubrik (stadens namn)
-        const rowHeader = document.createElement("div");
-        rowHeader.textContent = `${i} - ${cities[i]}`; // T.ex. "0 - Strasbourg"
-        row.appendChild(rowHeader);
-
-        // Lägg till celler med distanser
-        for (let j = 0; j < distances[i].length; j++) {
-            const cell = document.createElement("td");
-            cell.textContent = distances[i][j]; // Hämta distansvärdet
-            row.appendChild(cell);
-        }
-
-        table.appendChild(row); // Lägg till raden i tabellen
-    }
-
-    // Lägg till tabellen i container-elementet
-    //container.appendChild(table);
+//for (let name of cities){
+//    let tableColumn = document.createElement("div")
+//    tableID.appendChild(tableColumn)
+//    tableRow.classList.add("head_column")
+//    tableRow.textContent = `${name.name}`
+//}
+//for (let city = -1; city < cities.length; city++){
+//let tablerow = document.createElement("div")
+//    tableID.appendChild(tablerow)
+//    tablerow.classList.add("head_row")
+//    tablerow.textContent = `${city}`
+//    tableID.appendChild(tablerow)
+//    for (let j = 0; j < 39; j++){
+//        let tablecolumn = document.createElement("div")
+//        tablecolumn.classList.add("head_column")
+//        tablecolumn.textContent = ` ${city}, ${cities.name}`
+//        tableID.appendChild(tablecolumn)
+//  }
+//}
 
