@@ -40,33 +40,38 @@ for (let city of cities){
     citiesID.innerHTML += `<p class="cityBox"> ${city.name}</p>`
 }
 
+tableID.innerHTML = `<div class="cell head_row"></div>`
+for (let i = 0; i < cities.length; i++){
+   tableID.innerHTML+= `<div class="cell head_row">${cities[i].id}</div>`;
+}
 
+for (let i = 0; i < cities.length; i++){
+    if (i % 2=== 0 ){
+        tableID.innerHTML+= `<div class="cell head_column even_row">${cities[i].id}-${cities[i].name}</div>`  
+    }
+    else{
+        tableID.innerHTML+= `<div class="cell head_column">${cities[i].id}-${cities[i].name}</div>`  
+    }
+    
+    for (let j = 0; j < cities.length; j++){
+        if (i === j){
+            tableID.innerHTML += `<div class="cell even_col"></div>`;
+        }
 
-
-
-//for (let city of cities){
-//   // let tableRow = document.createElement("div")
-//    tableID.appendChild(tableRow)
-//    tableRow.classList.add("head_row")
-//    tableRow.textContent = `${city.id}`      
-//}
-//for (let name of cities){
-//    let tableColumn = document.createElement("div")
-//    tableID.appendChild(tableColumn)
-//    tableRow.classList.add("head_column")
-//    tableRow.textContent = `${name.name}`
-//}
-//for (let city = -1; city < cities.length; city++){
-//let tablerow = document.createElement("div")
-//    tableID.appendChild(tablerow)
-//    tablerow.classList.add("head_row")
-//    tablerow.textContent = `${city}`
-//    tableID.appendChild(tablerow)
-//    for (let j = 0; j < 39; j++){
-//        let tablecolumn = document.createElement("div")
-//        tablecolumn.classList.add("head_column")
-//        tablecolumn.textContent = ` ${city}, ${cities.name}`
-//        tableID.appendChild(tablecolumn)
-//  }
-//}
+        else {
+            let distance = ""
+            for (const d of distances){
+            if ((d.city1 === i && d.city2 === j) || (d.city1 === j && d.city2 === i)){
+            distance = d.distance
+            break
+            }
+        }
+       if( j % 2 === 0) {
+        tableID.innerHTML += `<div class="cell even_col">${distance /10 }</div>`;
+       }
+       else {
+        tableID.innerHTML += `<div class="cell">${distance /10 }</div>`;       }
+        }
+    }
+}
 
