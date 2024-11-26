@@ -1,5 +1,3 @@
-
-
 let target = prompt("Give me a city");
 const h2 = document.querySelector("h2");
 const h3 = document.querySelector("h3");
