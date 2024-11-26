@@ -1,6 +1,4 @@
-// Recommended: All functions declared here
 
-// Recommended: constants with references to existing HTML-elements
 
 let target = prompt("Give me a city");
 const h2 = document.querySelector("h2");
@@ -12,8 +10,6 @@ const linksID = document.getElementById("links");
 const closestSpan = document.getElementById("closest");
 const furthestSpan = document.getElementById("furthest");
 const body = document.querySelector("body")
-
-// Recommended: Ask for the city name and then the rest of the code
 
 
 // Funktion för att hitta en stad
