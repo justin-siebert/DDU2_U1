@@ -4,10 +4,9 @@ const h3 = document.querySelector("h3");
 const main = document.querySelector("main");
 const tableID = document.getElementById("table");
 const citiesID = document.getElementById("cities");
-const linksID = document.getElementById("links");
 const closestSpan = document.getElementById("closest");
 const furthestSpan = document.getElementById("furthest");
-const body = document.querySelector("body")
+
 
 
 // Funktion för att hitta en stad
