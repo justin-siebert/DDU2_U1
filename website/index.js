@@ -134,10 +134,10 @@ for (let i = 0; i < cities.length; i++) {
 }
 
 
-//Skapar den första tomma cellen
+//Skapar den första tomma cellen i tabellen
 tableID.innerHTML = `<div class="cell head_row"></div>`;
 
-//Skapar celler med 0-38
+//Skapar celler 0-38
 for (let i = 0; i < cities.length; i++) {
     tableID.innerHTML += `<div class="cell head_row">${cities[i].id}</div>`;
 }
@@ -171,90 +171,3 @@ for (let i = 0; i < cities.length; i++) {
         }
     }
 }
-
-// tabell
-/*
-tableID.innerHTML = `<div class="cell head_row"></div>`
-for (let i = 0; i < cities.length; i++){
-   tableID.innerHTML+= `<div class="cell head_row">${cities[i].id}</div>`;
-}
-
-for (let i = 0; i < cities.length; i++){
-    if (i % 2 === 0 ){
-        tableID.innerHTML+= `<div class="cell head_column even_row">${cities[i].id}-${cities[i].name}</div>`  
-    }
-    else{
-        tableID.innerHTML+= `<div class="cell head_column">${cities[i].id}-${cities[i].name}</div>`  
-    }
-    
-    for (let j = 0; j < cities.length; j++){
-        if (i === j){
-            tableID.innerHTML += `<div class="cell even_col"></div>`;
-        }
-
-        else {
-            let distance = ""
-            for (const d of distances){
-            if ((d.city1 === i && d.city2 === j) || (d.city1 === j && d.city2 === i)){
-            distance = d.distance
-            break
-            }
-        }
-       if( j % 2 === 0) {
-        tableID.innerHTML += `<div class="cell even_col">${distance /10 }</div>`;
-       }
-       else if ( i % 2 === 0 ){
-        tableID.innerHTML += `<div class="cell even_row">${distance /10 }</div>`;}
-       else {
-        tableID.innerHTML += `<div class="cell">${distance /10 }</div>`;}
-        }
-    }
-}
-*/
-
-/*
-const emptyCell = document.createElement("p");
-
-emptyCell.classList.add("cell");
-
-tableID.appendChild(emptyCell);
-
-
-for (let city of cities){
-    const idCell = document.createElement ("p");
-    idCell.classList.add("cell","head_row");
-    idCell.textContent = city.id;
-    tableID.appendChild(idCell);
-}
-
-
-for (let cityRow of cities){
-    let classEvenrows = "";
-        if (cityRow.id% 2 == 0){
-        classEvenrows="even_row";
-}
-
-
-const cityCell = document.createElement("p");
-cityCell.classList.add("cell","head_column");
-cityCell.textContent = `${cityRow.id}-${cityRow.name}`;
-cityCell.classList.add("even_row");
-tableID.appendChild(cityCell);
-
-
-for (let cityColumn of cities) {
-    let classEvenCols = "";
-        if ( cityColumn.id % 2 === 0) {
-        classEvenCols = "even_col";
-    }
-        if (cityRow.id== cityColumn.id) {
-        tableID.innerHTML += `<p class= "cell ${classEvenrows}"${classEvenCols}</p>`;
-    } 
-        else{
-        let match = distances.filter(d=> d.city1 == cityRow.id&& d.city2 == cityColumn.id
-            || d.ity1 == cityColumn.id && d.city2 == cityRow.id)[0]
-        tableID.innerHTML += `<p class="cell ${classEvenrows}${classEvenCols}">${match.distance / 10}</p>`
-       }
-    }
-}
-*/
