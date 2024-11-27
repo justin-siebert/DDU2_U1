@@ -7,8 +7,6 @@ const citiesID = document.getElementById("cities");
 const closestSpan = document.getElementById("closest");
 const furthestSpan = document.getElementById("furthest");
 
-
-
 // Funktion för att hitta en stad
 const cityFound = findCity(target);
 function findCity(target) {
@@ -31,7 +29,12 @@ function findClosestCity(targetCity) {
         let d = distances[i];
 
         if (d.city1 === targetCity.id || d.city2 === targetCity.id) {
-            let otherCityId = d.city1 === targetCity.id ? d.city2 : d.city1;
+            let otherCityId
+            if (d.city1 === targetCity.id){
+                otherCityId = d.city2
+            } else{
+                otherCityId = d.city1
+            } 
 
             for (let j = 0; j < cities.length; j++) {
                 if (cities[j].id === otherCityId) {
@@ -56,7 +59,12 @@ function findFurthestCity(targetCity) {
         let d = distances[i];
 
         if (d.city1 === targetCity.id || d.city2 === targetCity.id) {
-            let otherCityId = d.city1 === targetCity.id ? d.city2 : d.city1;
+            let otherCityId
+            if (d.city1 === targetCity.id){
+                otherCityId = d.city2
+            } else{
+                otherCityId = d.city1
+            } 
 
             for (let j = 0; j < cities.length; j++) {
                 if (cities[j].id === otherCityId) {
