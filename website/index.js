@@ -7,7 +7,6 @@ const citiesID = document.getElementById("cities");
 const closestSpan = document.getElementById("closest");
 const furthestSpan = document.getElementById("furthest");
 
-// Funktion för att hitta en stad
 const cityFound = findCity(target);
 function findCity(target) {
     let foundCity = null;
@@ -20,7 +19,6 @@ function findCity(target) {
     return foundCity;
 }
 
-// Funktion för att hitta närmaste staden
 function findClosestCity(targetCity) {
     let closestCity = null;
     let closestDistance = Infinity;
@@ -46,11 +44,9 @@ function findClosestCity(targetCity) {
             }
         }
     }
-
     return { city: closestCity, distance: closestDistance };
 }
 
-// Funktion för att hitta längst bort staden
 function findFurthestCity(targetCity) {
     let furthestCity = null;
     let furthestDistance = -Infinity;
@@ -76,7 +72,6 @@ function findFurthestCity(targetCity) {
             }
         }
     }
-
     return { city: furthestCity, distance: furthestDistance };
 }
 
@@ -89,7 +84,6 @@ if (cityFound === null) {
     document.title = cityFound.name;
 }
 
-// Hitta närmaste och längst bort-städer
 let closest = null;
 let furthest = null;
 
@@ -98,7 +92,6 @@ if (cityFound !== null) {
     furthest = findFurthestCity(cityFound);
 }
 
-// Visa närmaste och längst bort-städer i h3
 if (closest !== null && closest.city !== null) {
     closestSpan.textContent = closest.city.name;
 } else {
@@ -111,7 +104,6 @@ if (furthest !== null && furthest.city !== null) {
     h3.textContent = null;
 }
 
-// Skapa rutorna för städerna
 for (let i = 0; i < cities.length; i++) {
     let city = cities[i];
     let cityElement = document.createElement("p");
@@ -139,30 +131,22 @@ for (let i = 0; i < cities.length; i++) {
 }
 
 
-//Skapar den första tomma cellen i tabellen
 tableID.innerHTML = `<div class="cell head_row"></div>`;
-
-//Skapar celler 0-38
 for (let i = 0; i < cities.length; i++) {
     tableID.innerHTML += `<div class="cell head_row">${cities[i].id}</div>`;
 }
 
-// skapar resten av tabellen
 for (let i = 0; i < cities.length; i++) {
-    // Bestäm om det är en jämn rad (för att ge klassen `even_row`)
     const rowClass = i % 2 === 0 ? "even_row" : "";
 
-    // Lägg till första cellen i raden (stadsinfo)
     tableID.innerHTML += `<div class="cell head_column ${rowClass}">${cities[i].id}-${cities[i].name}</div>`;
 
     for (let j = 0; j < cities.length; j++) {
         const colClass = j % 2 === 0 ? "even_col" : "odd_col"; // Varannan kolumn
 
         if (i === j) {
-            // Lägg till tom cell på diagonalen
             tableID.innerHTML += `<div class="cell ${rowClass} ${colClass}"></div>`;
         } else {
-            // Hämta distansen mellan städer
             let distance = "";
             for (const d of distances) {
                 if ((d.city1 === i && d.city2 === j) || (d.city1 === j && d.city2 === i)) {
@@ -170,8 +154,6 @@ for (let i = 0; i < cities.length; i++) {
                     break;
                 }
             }
-
-            // Lägg till cell med avstånd och använd korrekt rad- och kolumnklass
             tableID.innerHTML += `<div class="cell ${rowClass} ${colClass}">${distance / 10}</div>`;
         }
     }
