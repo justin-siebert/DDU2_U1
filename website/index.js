@@ -137,12 +137,20 @@ for (let i = 0; i < cities.length; i++) {
 }
 
 for (let i = 0; i < cities.length; i++) {
-    const rowClass = i % 2 === 0 ? "even_row" : "";
+    let rowClass = "";
+    if (i % 2 === 0) {
+        rowClass = "even_row";
+    }
 
     tableID.innerHTML += `<div class="cell head_column ${rowClass}">${cities[i].id}-${cities[i].name}</div>`;
 
     for (let j = 0; j < cities.length; j++) {
-        const colClass = j % 2 === 0 ? "even_col" : "odd_col"; // Varannan kolumn
+        let colClass = "";
+        if (j % 2 === 0) {
+            colClass = "even_col";
+        } else {
+            colClass = "odd_col";
+        }
 
         if (i === j) {
             tableID.innerHTML += `<div class="cell ${rowClass} ${colClass}"></div>`;
